@@ -161,29 +161,13 @@ function commonRenderRobot2(data, ele, $li,title) {
     }, 100);   
 }
 //点击回答中的链接
-function clickResponseUrl(url,title,descriptId) {
-   console.log(url);
-   console.log(title);
-   if(url==""){
+function clickResponseUrl(obj,title,descriptId) {
+    var url = $(obj).attr("data-url");
+   if(url==""||url=="undefined"||url==null){
         getRobotResponse(title,descriptId);
    }else{
-  // 	window.open(url); 
-     //window.location.href=url ;
-	 if($summer.os=="pc"){
-		 window.open(url);
-		 
-	 }else{
-		 summer.openWin({
-			 
-			 id:"indexNew",
-			 url:"html/robot/index.html",
-			 pageParam:{
-				 title:title,
-				 url:url,
-				 id:descriptId
-			 }
-	 });
-	 }
+   
+	   window.open(url);
    }
 }
 $(function () {

@@ -98,11 +98,11 @@
 					<div class="multiSelect-content-box">
 					{{~it.response.docs :value:index}}
 						{{?index<10}}
-						<div class="multiSelect-content-item " onclick="clickResponseUrl('{{= value.url}}','{{= value.title}}','{{= value.id}}')" data-tar="{{= value.id}}">
+						<div class="multiSelect-content-item " data-url="{{=value.url}}" onclick="clickResponseUrl(this,'{{= value.title}}','{{= value.id}}')" data-tar="{{= value.id}}">
 						<span class=" left">{{=index+1}}.</span><span class="  right">{{=value.title}}</span>
 						</div>
 						{{??}}
-						<div class="multiSelect-content-item none fiveMore" onclick="clickResponseUrl('{{= value.url}}','{{= value.title}}','{{= value.id}}')">
+						<div class="multiSelect-content-item none fiveMore" data-url="{{=value.url}}" onclick="clickResponseUrl(this,'{{= value.title}}','{{= value.id}}')">
 						<span class="  left">{{=index+1}}.</span><span class="  right">{{=value.title}}</span>
 						</div>
 						{{?}}

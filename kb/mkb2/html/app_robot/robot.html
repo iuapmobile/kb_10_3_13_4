@@ -14,10 +14,12 @@
 	</head>
 	<body>
 				<div class="um-win um-page" id="main">
-                     <div class="um-header" >
-                     	<h3>导航栏</h3>
-                     	<a class="um-header-right" href="#" onclick="openWin()">修改</a>
-                     </div>
+                     <!--div class="um-header" >
+					 <a class="um-back" href="#" onclick="summer.closeWin()"></a>
+                     	<h3>问答</h3>
+                      
+                      
+                     </div-->
 					<div class="um-content p5" id="content">
 						 <div id="initQuestionList">
 					 	
@@ -27,9 +29,9 @@
 							</ul>
 						</div>
 					</div>
-					<div class="um-footer">
+					 <div class="um-footer">
 						<div class="chat-input-box">
-							<img src="../../img/speech.png" alt="" class="change-input-type" data-flag='speech'/>
+							<!--img src="../../img/speech.png" alt="" class="change-input-type" data-flag='speech'/-->
 
 							<div class="show-input">
 								<input type="text" class="form-control chat-input" placeholder="亲,有什么想要问我的吗?"/>
@@ -37,15 +39,13 @@
 									发送
 								</button>
 							</div>
-							<!-- <div class="show-speech none" onclick="speechToString()">
+							 <div class="show-speech none" onclick="speechToString()">
 								点击 说话
-							</div> -->
-							<div class="show-speech none"  id="clickSay">
-								按住说话
 							</div>
+						 
 						</div>
 
-					</div>
+					</div> 
 				</div>
 				
                 <div class="um-page returnPage"  id="exercise">
@@ -98,11 +98,11 @@
 					<div class="multiSelect-content-box">
 					{{~it.response.docs :value:index}}
 						{{?index<10}}
-						<div class="multiSelect-content-item " onclick="clickResponseUrl('{{= value.url}}','{{= value.title}}','{{= value.id}}')" data-tar="{{= value.id}}">
+						<div class="multiSelect-content-item " data-url="{{=value.url}}" onclick="clickResponseUrl(this,'{{= value.title}}','{{= value.id}}')" data-tar="{{= value.id}}">
 						<span class=" left">{{=index+1}}.</span><span class="  right">{{=value.title}}</span>
 						</div>
 						{{??}}
-						<div class="multiSelect-content-item none fiveMore" onclick="clickResponseUrl('{{= value.url}}','{{= value.title}}','{{= value.id}}')">
+						<div class="multiSelect-content-item none fiveMore" data-url="{{=value.url}}" onclick="clickResponseUrl(this,'{{= value.title}}','{{= value.id}}')">
 						<span class="  left">{{=index+1}}.</span><span class="  right">{{=value.title}}</span>
 						</div>
 						{{?}}
@@ -135,23 +135,18 @@
 			</div>
 		</script>
 		<script>
-			function openWin(){
-				summer.openWin({
-					id:"robot2",
-					url:"html/app_robot/robot2.html"
-				});
-			}
 			//不同机器人配置项
-			var __robotPhotoUrl="../../image/common/robotl.png",__robotHelloText="HI，您好，我是用友云雪儿，有什么 可以帮到您？",__robotApiKey="8001";
+			var __robotPhotoUrl="../../image/common/robotl.png",__robotHelloText="您好，我是云平台沫沫，有什么问题都可以问我？",__robotApiKey="6942828ac42f4152a092863b18620f66";//8001
 		</script>
 		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
 		<script type="text/javascript" src=" ../../js/public/summer.js"></script>
 		<script type="text/javascript" src=" ../../js/public/doT.min.js"></script>
-		<script type="text/javascript" src=" ../../js/public/layer_mobile/layer.js"></script>		
+		<script type="text/javascript" src=" ../../js/public/layer_mobile/layer.js"></script>
+		<script type="text/javascript" src=" ../../js/public/kbconfig.js"></script>		
 		<script type="text/javascript" src="./robot.js"></script>
 		<script type="text/javascript" src="./data.js"></script>
 		<script type="text/javascript" src=" ../../js/Frameworks/iuapmobile.frameworks.ui.js"></script>
-		<script type="text/javascript" src=" ../../js/public/kbconfig.js"></script>
+		
 		 
 	</body>
 </html>

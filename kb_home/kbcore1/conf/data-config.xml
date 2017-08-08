@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataConfig>
+
+    <dataSource type="BinFileDataSource"/>
+   
+    <dataSource type="JdbcDataSource"   name="iuapkb"
+            driver="com.mysql.jdbc.Driver"   
+            url="jdbc:mysql://localhost:3306/iuapkb?characterEncoding=utf-8&amp;autoReconnect=true" 
+            user="root"   
+            password="1qazZAQ!"/>   
+    <document>   
+        <entity name="kbIndexInfo" query="SELECT * FROM iuapkb.kbindexinfo" dataSource="iuapkb">  
+          <field column="id"          name="id" />  
+          <field column="title"        name="title" />
+          <field column="descript"        name="descript" />
+          <field column="descriptImg"        name="descriptImg" />
+          <field column="url"        name="url" /> 
+          <field column="author"        name="author" />   
+          <field column="createTime"        name="createTime" />   
+          <field column="updateTime"        name="updateTime" />   
+          
+          <field column="keywords"        name="keywords" />  
+          <field column="text"        name="text" />  
+          <field column="tag"        name="tag" />    
+        </entity> 
+
+
+    </document>
+</dataConfig>
+
+

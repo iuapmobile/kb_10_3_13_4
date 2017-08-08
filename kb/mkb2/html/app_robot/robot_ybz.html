@@ -14,22 +14,24 @@
 	</head>
 	<body>
 				<div class="um-win um-page" id="main">
-                     <div class="um-header" >
-                     	<h3>导航栏</h3>
-                     	<a class="um-header-right" href="#" onclick="openWin()">修改</a>
-                     </div>
+                     <!--div class="um-header" >
+					 <a class="um-back" href="#" onclick="summer.closeWin()"></a>
+                     	<h3>问答</h3>
+
+
+                     </div-->
 					<div class="um-content p5" id="content">
 						 <div id="initQuestionList">
-					 	
+
 					    </div>
 						<div id="convo">
 							<ul class="chat-thread" id="chat-thread">
 							</ul>
 						</div>
 					</div>
-					<div class="um-footer">
+					 <div class="um-footer">
 						<div class="chat-input-box">
-							<img src="../../img/speech.png" alt="" class="change-input-type" data-flag='speech'/>
+							<!--img src="../../img/speech.png" alt="" class="change-input-type" data-flag='speech'/-->
 
 							<div class="show-input">
 								<input type="text" class="form-control chat-input" placeholder="亲,有什么想要问我的吗?"/>
@@ -37,22 +39,20 @@
 									发送
 								</button>
 							</div>
-							<!-- <div class="show-speech none" onclick="speechToString()">
+							 <div class="show-speech none" onclick="speechToString()">
 								点击 说话
-							</div> -->
-							<div class="show-speech none"  id="clickSay">
-								按住说话
 							</div>
+
 						</div>
 
 					</div>
 				</div>
-				
+
                 <div class="um-page returnPage"  id="exercise">
                 	<div class="um-header" >
                 		<a href="#" class="um-back" onclick="_removeData()">返回</a>
                 		<h3>机器人练习</h3>
-                		
+
                 	</div>
                 	<div class="um-content p10" id="content2">
                 		<div  id="_article">
@@ -67,9 +67,9 @@
                 		<div>
                 			<p class="tr mr15 addNewq" href="#" style="color:#1BAEDE;font-size:40px;" onclick="addQuestion()"  ><span>+</span></p>
                 		</div>
-                		
-                		
-                		
+
+
+
                          <div class="onlyanswer">
                          	<div class="" >
                          		<div>答案:</div>
@@ -77,8 +77,8 @@
                          	</div>
                          </div>
                 	</div>
-                		
-                        
+
+
                 	</div>
                 	  <div class="um-footer">
                          	 <button class="btn um-btn-info um-white submitButton" onclick="submitData()">提交</button>
@@ -98,11 +98,11 @@
 					<div class="multiSelect-content-box">
 					{{~it.response.docs :value:index}}
 						{{?index<10}}
-						<div class="multiSelect-content-item " onclick="clickResponseUrl('{{= value.url}}','{{= value.title}}','{{= value.id}}')" data-tar="{{= value.id}}">
+						<div class="multiSelect-content-item " data-url="{{=value.url}}" onclick="clickResponseUrl(this,'{{= value.title}}','{{= value.id}}')" data-tar="{{= value.id}}">
 						<span class=" left">{{=index+1}}.</span><span class="  right">{{=value.title}}</span>
 						</div>
 						{{??}}
-						<div class="multiSelect-content-item none fiveMore" onclick="clickResponseUrl('{{= value.url}}','{{= value.title}}','{{= value.id}}')">
+						<div class="multiSelect-content-item none fiveMore" data-url="{{=value.url}}" onclick="clickResponseUrl(this,'{{= value.title}}','{{= value.id}}')">
 						<span class="  left">{{=index+1}}.</span><span class="  right">{{=value.title}}</span>
 						</div>
 						{{?}}
@@ -112,13 +112,13 @@
 						<div class="multiSelect-content-item-close closeMore tc none f14"  onclick="closeAll(event)"><span>收起</span><i class="ti-angle-double-up"></i></div>
 					{{?}}
 					</div>
-					
+
 				{{}}}
 				<div  class="evaluate tc"  data-tar="{{=it.responseHeader.param.qid}}">
 					<p class="tc mt10 f14 feedBackButtion">
 						<span class="valuable feedBack" onclick="valuableFeedback(event)"><i class="ti-thumb-up f25"></i>问题解决</span>
-						<span class="useless ml10 feedBack" onclick="uselessFeedback(event)"> <i class="ti-thumb-down f25"></i>不靠谱</span> 
-						<span class="valuable ml10 _checkButton"   onclick="reviseQuestion(event)">修改</span> 
+						<span class="useless ml10 feedBack" onclick="uselessFeedback(event)"> <i class="ti-thumb-down f25"></i>不靠谱</span>
+						<span class="valuable ml10 _checkButton"   onclick="reviseQuestion(event)">修改</span>
 					</p>
 				</div>
 			</div>
@@ -135,23 +135,18 @@
 			</div>
 		</script>
 		<script>
-			function openWin(){
-				summer.openWin({
-					id:"robot2",
-					url:"html/app_robot/robot2.html"
-				});
-			}
 			//不同机器人配置项
-			var __robotPhotoUrl="../../image/common/robotl.png",__robotHelloText="HI，您好，我是友报账小客服，有什么可以帮到您？",__robotApiKey="2482324b3f134520a6c35055552a5188";
+			var __robotPhotoUrl="../../image/common/robotl.png",__robotHelloText="Hi，您好，我是友报账小客服，有什么可以帮到您？",__robotApiKey="2482324b3f134520a6c35055552a5188";
 		</script>
 		<script type="text/javascript" src="../../js/public/jquery.min.js"></script>
 		<script type="text/javascript" src=" ../../js/public/summer.js"></script>
 		<script type="text/javascript" src=" ../../js/public/doT.min.js"></script>
-		<script type="text/javascript" src=" ../../js/public/layer_mobile/layer.js"></script>		
+		<script type="text/javascript" src=" ../../js/public/layer_mobile/layer.js"></script>
+		<script type="text/javascript" src=" ../../js/public/kbconfig.js"></script>
 		<script type="text/javascript" src="./robot.js"></script>
 		<script type="text/javascript" src="./data.js"></script>
 		<script type="text/javascript" src=" ../../js/Frameworks/iuapmobile.frameworks.ui.js"></script>
-		<script type="text/javascript" src=" ../../js/public/kbconfig.js"></script>
-		 
+
+
 	</body>
 </html>

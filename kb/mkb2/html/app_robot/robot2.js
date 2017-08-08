@@ -125,7 +125,7 @@ function getRobotResponse(text,descriptId) {
 		error : function(res) {
 			 __userType="customer";
 			var data = data_demo_err;
-			 
+
 			commonRenderRobot(data, $("#multiSelectTmpl"), $li,text);
 		}
 	});
@@ -133,7 +133,7 @@ function getRobotResponse(text,descriptId) {
 //通用的渲染方法
 function commonRenderRobot(data, ele, $li,question) {
     $li.addClass('multiSelect-response').find('.chat-item-text').remove();
-   
+
     var text = doT.template(ele.text());
     $li.append(text(data));
     //普通用户不显示跳转到机器人学习界面按钮
@@ -158,37 +158,33 @@ function commonRenderRobot2(data, ele, $li,title) {
     var top = $('#convo').height()
     $('#content').animate({
         scrollTop: top
-    }, 100);   
+    }, 100);
 }
 //点击回答中的链接
 function clickResponseUrl(obj,title,descriptId) {
   // console.log(url);
    console.log(title);
     var url = $(obj).attr("data-url");
-   if(url==""){
+   if(url==null || url=="" || url=="undefined"){
         getRobotResponse(title,descriptId);
    }else{
-  // 	window.open(url); 
-     //window.location.href=url ;
-	 if($summer.os=="pc"){
-		 window.open(url);
-		 
-	 }else{
-		 summer.openWin({
-			 
-			 id:"indexNew",
-			 url:"html/robot/index.html",
-			 pageParam:{
-				 title:title,
-				 url:url,
-				 id:descriptId
-			 }
-	 });
-	 }
+	    if($summer.os=="pc"){
+		      window.open(url);
+      }else{
+		      summer.openWin({
+			        id:"indexNew",
+			        url:"html/robot/index.html",
+			        pageParam:{
+				          title:title,
+				          url:url,
+				          id:descriptId
+			        }
+	        });
+	     }
    }
 }
 $(function () {
-	
+
     //切换输入和语音方式
     $('.change-input-type').on('click', function () {
         var flag = $(this).attr('data-flag');
@@ -206,7 +202,7 @@ $(function () {
     $('.chat-input').on('focus', function () {
         $(this).css('color', '#343434');
     })
-    //点击发送文字 
+    //点击发送文字
     $('.chat-send').on('click', function () {
         sendOut($('.chat-input').val());
     });
@@ -228,7 +224,7 @@ $(function () {
 				    sendOut(chatText);
             }
       };
-    
+
 	  var codeall=String(location.search);
     //初始化内容
     init();
@@ -238,7 +234,7 @@ $(function () {
 	}else{
 		var questionInit= getParameter("question",codeall);
 		if(questionInit==""){
-			
+
 			return;
 		}else{
 		 questionInit=decodeURI(questionInit);
@@ -246,29 +242,29 @@ $(function () {
 		 createUserTalk(questionInit);
 	    getRobotResponse(questionInit);
 		}
-	
+
 	}
-    
+
 });
 function addKey(args){
-	 
+
  	//var offsetT=$(this).offset().top;
  	//var contentScroll=$(thisDom).parents(".um-footer").siblings("#content").scrollTop();
  	if(args.status=="show"){
  		keyshow=1;
 		var top = $('#convo').height()
-			  
+
  	 	setTimeout(function(){
 					$('#content').animate({
 						scrollTop: top
-					}, 100);   
+					}, 100);
 				},100);
  	}else{
  		keyshow=0;
  	}
  }
 summerready = function () {
-	
+
 //不用初始化
   /*  if ($summer.os == "ios") {
         //初始化语音
@@ -276,11 +272,11 @@ summerready = function () {
     } else {
         summer.callService("SpeechService.init", {"appid": "58eb438d"}, false);
     } */
-	 
+
 };
 //解析url
 function getParameter(param,query){
-    
+
     var iLen = param.length;
     var iStart = query.indexOf(param);
     if (iStart == -1){return 0;}
@@ -296,9 +292,9 @@ function getParameter(param,query){
 	   var keyword = args.result;
 			 createUserTalk(keyword);
 			getRobotResponse(keyword);
-	  
+
   };
- 
+
 //调用讯飞语音通话功能
 function speechToString() {
     $('.show-speech').addClass('active');
@@ -322,17 +318,17 @@ function speechToString() {
 						time: 2//1秒后自动关闭
 					});
 					$('.show-speech').removeClass('active');
-					  
+
 				 }else{
-					
+
 					createUserTalk(keyword);
 						getRobotResponse(keyword);
 						 $('.show-speech').removeClass('active');
-					 
-				 }
-				
 
-			   
+				 }
+
+
+
 			},function(reason){
 				if(reason==null){
 					 layer.open({
@@ -341,7 +337,7 @@ function speechToString() {
 						time: 2//1秒后自动关闭
 					});
 					$('.show-speech').removeClass('active');
-					
+
 				}else{
 					 layer.open({
 						content: reason,
@@ -369,7 +365,7 @@ function sendOut(dataval) {
         getRobotResponse(chatText);
     }
 }
- 
+
 //查看更多显示
 function showAll(event){
 	$(event.currentTarget).addClass('none');
@@ -401,14 +397,14 @@ function valuableFeedback(event){
 		        success:function(data){
 		            //alert("成功:\n"+JSON.stringify(data));
 		           // curTarget.parents(".evaluate").html("感谢您的反馈！");
-		 
+
 		        },
 		        error:function(data){
 		        	//alert("请求失败:\n"+JSON.stringify(data));
 		        }
 
 		    });
-	} 
+	}
 }
 function uselessFeedback(event){
 	var curTarget=$(event.currentTarget);
@@ -428,14 +424,14 @@ function uselessFeedback(event){
 		        success:function(data){
 		           // alert("成功:\n"+JSON.stringify(data));
 		           // curTarget.parents(".evaluate").html("感谢您的反馈！");
-		 
+
 		        },
 		        error:function(data){
 		        	//alert("请求失败:\n"+JSON.stringify(data));
 		        }
 
 		    });
-	} 
+	}
 }
 //修改编辑页面
 function reviseQuestion(event){
@@ -448,7 +444,7 @@ function reviseQuestion(event){
 		isReverse: 0,
     	transition: "um"
 	});
-	
+
 };
 function addQuestion(){
 	__questionNum++;
@@ -471,7 +467,7 @@ function submitData(){
                   questionData.splice(i,1);
                   i= i-1;
          }
-	              
+
 	 }
 	var _answerData=$('.onlyanswer').find('textarea').val();
 	var __allData={
@@ -487,7 +483,7 @@ function submitData(){
             skin: 'msg',
             time: 1 //1秒后自动关闭
         });
-	 
+
 }
 function _removeData(){
 	$("#content2").find('div.addItem').remove();

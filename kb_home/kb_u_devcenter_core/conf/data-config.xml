@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataConfig>
+
+    <dataSource type="BinFileDataSource"/>
+
+    <dataSource type="JdbcDataSource"   name="kb_u_devcenter"
+            driver="com.mysql.jdbc.Driver"
+            url="jdbc:mysql://localhost:3306/kb_u_devcenter?characterEncoding=utf-8&amp;autoReconnect=true"
+            user="root"
+            password="1qazZAQ!"/>
+    <document>
+        <entity name="kbIndexInfo" query="SELECT * FROM kb_u_devcenter.kbindexinfo" dataSource="kb_u_devcenter">
+          <field column="id"          name="id" />
+          <field column="title"        name="title" />
+          <field column="descript"        name="descript" />
+
+          <field column="title"        name="question" />
+          <field column="descript"        name="answer" />
+
+
+          <field column="descriptImg"        name="descriptImg" />
+          <field column="url"        name="url" />
+          <field column="author"        name="author" />
+          <field column="createTime"        name="createTime" />
+          <field column="updateTime"        name="updateTime" />
+
+          <field column="keywords"        name="keywords" />
+          <field column="text"        name="text" />
+          <field column="tag"        name="tag" />
+        </entity>
+
+        <entity name="qa" query="select * from kb_u_devcenter.qa" dataSource="">
+          <field column="id"          name="id" />
+          <field column="question"        name="question" />
+          <field column="answer"        name="answer" />
+          <field column="question"        name="title" />
+          <field column="answer"        name="descript" />
+        </entity>
+
+        <entity name="qa_similar" query="select b.id, a.id as q_id,a.question as q, b.question as qs, a.answer, a.createTime from kb_u_devcenter.qa_similar b left join kb_u_devcenter.qa a on a.id=b.qid where b.question like '%%' group by b.id order by a.createTime desc" dataSource="kb_u_devcenter">
+          <field column="id"          name="id" />
+          <field column="qs"        name="question" />
+          <field column="answer"        name="answer" />
+          <field column="qs"        name="title" />
+          <field column="answer"        name="descript" />
+        </entity>
+
+
+
+    </document>
+</dataConfig>
