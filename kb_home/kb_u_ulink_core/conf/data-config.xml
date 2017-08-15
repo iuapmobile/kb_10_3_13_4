@@ -35,14 +35,21 @@
           <field column="answer"        name="answer" />
           <field column="question"        name="title" />
           <field column="answer"        name="descript" />
+
+          <field column="kbid"        name="kbid" />
+          <field column="url"        name="url" />
         </entity>
 
-        <entity name="qa_similar" query="select b.id, a.id as q_id,a.question as q, b.question as qs, a.answer, a.createTime from kb_u_ulink.qa_similar b left join kb_u_ulink.qa a on a.id=b.qid where b.question like '%%' group by b.id order by a.createTime desc" dataSource="kb_u_ulink">
+        <entity name="qa_similar" query="select b.id, b.qid, a.id as q_id,a.question as q, b.question as qs, a.answer, a.url, a.kbid, a.createTime from kb_u_ulink.qa_similar b left join kb_u_ulink.qa a on a.id=b.qid where b.question like '%%' group by b.id order by a.createTime desc" dataSource="kb_u_ulink">
           <field column="id"          name="id" />
           <field column="qs"        name="question" />
           <field column="answer"        name="answer" />
           <field column="qs"        name="title" />
           <field column="answer"        name="descript" />
+
+          <field column="kbid"        name="kbid" />
+          <field column="url"        name="url" />
+          <field column="qid"        name="qid" />
         </entity>
 
 

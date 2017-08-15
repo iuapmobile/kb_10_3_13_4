@@ -189,6 +189,9 @@
             <field name="homoionym" type="string" indexed="true" stored="true"/>
             <field name="correlationDegree" type="string" indexed="true" stored="true"/>
 
+            <field name="qid" type="string" indexed="true" stored="true"/>
+            <field name="kbid" type="string" indexed="true" stored="true"/>
+
             <field name="text_ik" type="text_ik" indexed="true" stored="true" multiValued="false"/>
             <!--gct 我添加的IK分词 -->
             <!--fieldType name="text_ik" class="solr.TextField">

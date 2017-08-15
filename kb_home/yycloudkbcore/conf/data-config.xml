@@ -35,14 +35,28 @@
           <field column="answer"        name="answer" />
           <field column="question"        name="title" />
           <field column="answer"        name="descript" />
+
+          <field column="kbid"        name="kbid" />
+          <field column="url"        name="url" />
+
+          <field column="createTime"        name="createTime" />
+          <field column="updateTime"        name="updateTime" />
+
         </entity>
 
-        <entity name="qa_similar" query="select b.id, a.id as q_id,a.question as q, b.question as qs, a.answer, a.createTime from yycloudkb.qa_similar b left join yycloudkb.qa a on a.id=b.qid where b.question like '%%' group by b.id order by a.createTime desc" dataSource="yycloudkb">
+        <entity name="qa_similar" query="select b.id, b.qid, a.id as q_id,a.question as q, b.question as qs, a.answer, a.url, a.kbid, b.createTime, b.updateTime from yycloudkb.qa_similar b left join yycloudkb.qa a on a.id=b.qid where b.question like '%%' group by b.id order by a.createTime desc" dataSource="yycloudkb">
           <field column="id"          name="id" />
           <field column="qs"        name="question" />
           <field column="answer"        name="answer" />
           <field column="qs"        name="title" />
           <field column="answer"        name="descript" />
+
+          <field column="kbid"        name="kbid" />
+          <field column="url"        name="url" />
+          <field column="qid"        name="qid" />
+
+          <field column="createTime"        name="createTime" />
+          <field column="updateTime"        name="updateTime" />
         </entity>
 
 
