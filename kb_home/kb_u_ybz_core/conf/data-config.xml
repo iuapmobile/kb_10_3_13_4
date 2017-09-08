@@ -27,6 +27,15 @@
           <field column="keywords"        name="keywords" />
           <field column="text"        name="text" />
           <field column="tag"        name="tag" />
+
+          <field column="product"        name="product" />
+          <field column="subproduct"        name="subproduct" />
+          <field column="s_top"        name="s_top" />
+          <field column="s_kbsrc"        name="s_kbsrc" />
+          <field column="s_kbcategory"        name="s_kbcategory" />
+          <field column="s_hot"        name="s_hot" />
+
+          <field column="kbid"        name="kbid" />
         </entity>
 
         <entity name="qa" query="select * from kb_u_ybz.qa" dataSource="kb_u_ybz">

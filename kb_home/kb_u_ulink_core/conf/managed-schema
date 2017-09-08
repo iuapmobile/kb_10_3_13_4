@@ -189,6 +189,13 @@
             <field name="homoionym" type="string" indexed="true" stored="true"/>
             <field name="correlationDegree" type="string" indexed="true" stored="true"/>
 
+            <field name="product" type="string" indexed="true" stored="true"/>
+            <field name="subproduct" type="string" indexed="true" stored="true"/>
+            <field name="s_top" type="int" indexed="true" stored="true"/>
+            <field name="s_kbsrc" type="int" indexed="true" stored="true"/>
+            <field name="s_kbcategory" type="int" indexed="true" stored="true"/>
+            <field name="s_hot" type="int" indexed="true" stored="true"/>
+            
             <field name="qid" type="string" indexed="true" stored="true"/>
             <field name="kbid" type="string" indexed="true" stored="true"/>
             
